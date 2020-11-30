@@ -93,6 +93,7 @@ public class HuffmanTest
     @Test
     public void RandomContentGenerator(){
 
+        //generating random files
         File out = new File(filesPath+"random1.txt");
         File out2 = new File(filesPath+"random2.txt");
         File out3 = new File(filesPath+"random3.txt");
