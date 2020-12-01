@@ -45,8 +45,8 @@ public class HuffmanTest
     String pathDeschubs_Files3 = "Resources"+File.separator + "Deschubs"+File.separator+"OriginalFiles3"+File.separator;
     String pathDeschubs_HuffCompressed = "Resources"+File.separator + "Deschubs"+File.separator+"HuffCompressed"+File.separator;
     String pathDeschubs_LZWCompressed = "Resources"+File.separator + "Deschubs"+File.separator+"LZCompressed"+File.separator;
-    String pathDeschubs_HuffSolution= "Resources"+File.separator + "Deschubs"+File.separator+"HuffSolution"+File.separator;
     String pathDeschubs_LZWSolution = "Resources"+File.separator + "Deschubs"+File.separator+"LZWSolution"+File.separator;
+    String pathDeschubs_HuffSolution= "Resources"+File.separator + "Deschubs"+File.separator+"HuffSolution"+File.separator;
     String pathDeschubs_CompressedArchive = "Resources"+File.separator + "Deschubs"+File.separator+"CompressedArchive"+File.separator;
     String pathDeschubs_UnArchiveSolution = "Resources"+File.separator + "Deschubs"+File.separator+"UnArchiveSolution"+File.separator;
 
@@ -59,6 +59,8 @@ public class HuffmanTest
 
     String pathSchubsL_TestFiles= "Resources"+File.separator + "SchubsL"+File.separator+"TestFiles"+File.separator;
     String pathSchubs__SolutionFiles = "Resources"+File.separator + "SchubsL"+File.separator+"SolutionFiles"+File.separator;
+
+    String pathJustDirectory = "Resources" + File.separator;
 
 
     //foldersEqual compares two folders to see if they are equal size.
@@ -301,14 +303,14 @@ public class HuffmanTest
     }
 
     @Test
-    public void passingTestCasesDes() {
+    public void passingTestCasesDes1() {
         String [] testsUnarchive = {pathDeschubs_CompressedArchive+"ArchivedFiles1.zh", pathDeschubs_CompressedArchive+"ArchivedFiles2.zh", pathDeschubs_CompressedArchive+"ArchivedFiles3.zh"};
 
         for(int i = 0; i < testsUnarchive.length; i++){
             String [] args = {testsUnarchive[i]};
             Deschubs.main(args);   
         }
-        
+
         String [] folders1 = {pathDeschubs_Files, pathDeschubs_UnArchiveSolution};
         String [] folders2 = {pathDeschubs_Files2, pathDeschubs_UnArchiveSolution};
         String [] folders3 = {pathDeschubs_Files2, pathDeschubs_UnArchiveSolution};
@@ -316,25 +318,80 @@ public class HuffmanTest
         assertTrue(foldersEqual(folders2));
         assertTrue(foldersEqual(folders3));
     }
+    
 
-    // //The file to be Tars'd is instead a directory and should therefore fail
-    // @Test
-    // public void fileIsDirectory() {
-    //     String [] tests = {testsArchivePath+ "archive.txt", filesPath+"isFolder1", filesPath+"Test1b.txt", filesPath+"isFolder2", filesPath+"Test1a.txt"};
-    //     Tarsn.main(tests);
-    //     assertEquals(false, Tarsn.fileExists());
-    // }
+     //Test for Uncompressing SchubsL compressed files
+
+    @Test
+    public void passingTestCasesDes2() {
+        String [] testsLZW = {pathDeschubs_LZWCompressed +"Test1a.txt.ll",pathDeschubs_LZWCompressed+"Test1b.txt.ll", pathDeschubs_LZWCompressed+"Test1c.txt.ll",pathDeschubs_LZWCompressed+"Test1d.txt.ll",pathDeschubs_LZWCompressed+"Test1e.txt.ll",
+        pathDeschubs_LZWCompressed+"Test3a.txt.ll",pathDeschubs_LZWCompressed+"Test3b.txt.ll", pathDeschubs_LZWCompressed+"Test3c.txt.ll",pathDeschubs_LZWCompressed+"Test3d.txt.ll",pathDeschubs_LZWCompressed+"Test3e.txt.ll",
+        pathDeschubs_LZWCompressed+"Test4a.txt.ll",pathDeschubs_LZWCompressed+"Test4b.txt.ll", pathDeschubs_LZWCompressed+"Test4c.txt.ll",pathDeschubs_LZWCompressed+"Test4d.txt.ll",pathDeschubs_LZWCompressed+"Test4e.txt.ll",
+        pathDeschubs_LZWCompressed+"Test5a.txt.ll",pathDeschubs_LZWCompressed+"Test5b.txt.ll", pathDeschubs_LZWCompressed+"Test5c.txt.ll",pathDeschubs_LZWCompressed+"Test5d.txt.ll",pathDeschubs_LZWCompressed+"Test5e.txt.ll"};
+
+        for(int i = 0; i < testsLZW.length; i++){
+            String [] args = {testsLZW[i]};
+            Deschubs.main(args);   
+        }
+
+        String [] folders = {pathDeschubs_LZWCompressed, pathDeschubs_LZWSolution};
+        assertTrue(foldersEqual(folders));
+    }
 
 
-    //  /**
-    //  * Test1a, 2a, 3a, 4a: Any combination of the files to be Tars'd containing spaces, line endings, being empty, not existing, being directories, containing many characters, or containing few characters.
-    //  */
+    //Test for Uncompressing SchubsH compressed files
+    @Test
+    public void passingTestCasesDes3() {
+        String [] testsHuff = {pathDeschubs_HuffCompressed +"Test1a.txt.hh",pathDeschubs_HuffCompressed+"Test1b.txt.hh", pathDeschubs_HuffCompressed+"Test1c.txt.hh",pathDeschubs_HuffCompressed+"Test1d.txt.hh",pathDeschubs_HuffCompressed+"Test1e.txt.hh",
+        pathDeschubs_HuffCompressed+"Test3a.txt.hh",pathDeschubs_HuffCompressed+"Test3b.txt.hh", pathDeschubs_HuffCompressed+"Test3c.txt.hh",pathDeschubs_HuffCompressed+"Test3d.txt.hh",pathDeschubs_HuffCompressed+"Test3e.txt.hh",
+        pathDeschubs_HuffCompressed+"Test4a.txt.hh",pathDeschubs_HuffCompressed+"Test4b.txt.hh", pathDeschubs_HuffCompressed+"Test4c.txt.hh",pathDeschubs_HuffCompressed+"Test4d.txt.hh",pathDeschubs_HuffCompressed+"Test4e.txt.hh",
+        pathDeschubs_HuffCompressed+"Test5a.txt.hh",pathDeschubs_HuffCompressed+"Test5b.txt.hh", pathDeschubs_HuffCompressed+"Test5c.txt.hh",pathDeschubs_HuffCompressed+"Test5d.txt.hh",pathDeschubs_HuffCompressed+"Test5e.txt.hh"};
 
-    //  @Test
-    //  public void compbination(){
-    //     String [] tests = {testsArchivePath+ "archive.txt", filesPath+"isFolder1", filesPath+"Test1b.txt", filesPath+"Test2a", filesPath+"Test5a.txt", filesPath+"Test4a.txt", filesPath+"doesnotexist.txt", };
-    //     Tarsn.main(tests);
-    //     assertEquals(false, Tarsn.fileExists());
-    //  }
+        for(int i = 0; i < testsHuff.length; i++){
+            String [] args = {testsHuff[i]};
+            Deschubs.main(args);   
+        }
+
+        String [] folders = {pathDeschubs_HuffCompressed, pathDeschubs_HuffSolution};
+        assertTrue(foldersEqual(folders));
+    }
+
+    //The file is instead a directory and should therefore fail
+    //Four tests are run in this function
+    @Test
+    public void fileIsDirectory1() {
+        String [] tests1 = {pathSchubsArc_Archive+ "archive.zh", pathJustDirectory+"isFolder1", pathJustDirectory+"isFolder2"};
+        String [] tests2 = {pathJustDirectory+"isFolder1", pathJustDirectory+"isFolder2"};
+
+        SchubsArc.main(tests1);
+        SchubsH.main(tests2);
+        SchubsL.main(tests2);
+        Deschubs.main(tests2);
+
+        assertEquals(false, SchubsArc.fileExists());
+        assertEquals(false, SchubsH.fileExists());
+        assertEquals(false, SchubsL.fileExists());
+        assertEquals(false, Deschubs.fileExists());
+    }
+
+
+     /**
+     * Test1a, 2a, 3a, 4a: Any combination of the files to be Tars'd containing spaces, line endings, being empty, not existing, being directories, containing many characters, or containing few characters.
+     * Four tests are run in this function
+     */
+
+     @Test
+     public void compbination(){
+        String [] tests = {pathSchubsArc_Archive+ "archive.zh", pathJustDirectory+"isFolder1", randomSchubsArc+"Test1b.txt", randomSchubsArc+"Test2a", randomSchubsArc+"Test5a.txt", randomSchubsArc+"Test4a.txt", randomSchubsArc+"doesnotexist.txt", };
+        SchubsArc.main(tests);
+        SchubsH.main(tests);
+        SchubsL.main(tests);
+        Deschubs.main(tests);
+
+        assertEquals(false, SchubsArc.fileExists());
+        assertEquals(false, SchubsH.fileExists());
+        assertEquals(false, SchubsL.fileExists());
+        assertEquals(false, Deschubs.fileExists());
+     }
 
 }
