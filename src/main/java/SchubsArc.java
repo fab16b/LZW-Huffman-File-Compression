@@ -1,11 +1,13 @@
  /**
- * Date: Nov 13, 2020
+ * Date: Nov 30, 2020
  * Course: Software Engineering II
  * Semester: Fall 2020
  * Author: Felix Mbikogbia
- * Programs creates an archive file with the content of the filenames passed
- * Compile: javac Tarsn.java
- * Execute: java Tarsn archive-name filename filename ......
+ * Compile: javac SchubsArc.java
+ * Execute: java SchubsArch *.txt
+ * Execute: java SchubsArch file1 file2 file3 file4 ... 
+ * Dependencies: BinaryOut.java, BinaryIn.java
+ * This program creates an archive of text files, then compresses using expandHuffman function.
  *
  */
 

@@ -1,18 +1,21 @@
 import java.io.File;
 
-//import jdk.internal.agent.resources.agent;
-
-//import jdk.internal.net.http.PullPublisher;
-
 /*************************************************************************
- *  Compilation:  javac LZW.java
- *  Execution:    java LZW - < input.txt   (compress)
- *  Execution:    java LZW + < input.txt   (expand)
+ * Author:         Felix Mbikogbia
+ * Date:           Nov 30, 2020
+ * Course:         Software Engineering 2, Fell semester
+ *  Compilation:  javac Deschubs.java
+ *  Execution:    java Deschubs *.ll
+ * Execution:    java Deschubs *.hh
+ * Execution:    java Deschubs *.zh
+ * Execution:    java Deschubs file.ll file.hh file.zh ....
  *  Dependencies: BinaryIn.java BinaryOut.java
  *
- *  Compress or expand binary input from standard input using LZW.
+ * Decompresses Huffman compressed files
+ * Decompresses LZW compressed files
+ * Decompresses and Untars compressed tar files
  *
- *
+
  *************************************************************************/
 
 public class Deschubs {

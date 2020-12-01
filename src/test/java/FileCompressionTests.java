@@ -1,9 +1,9 @@
 /**
- * Date: Nov 13, 2020
+ * Date: Nov 30, 2020
  * Course: Software Engineering II
  * Semester: Fall 2020
  * Author: Felix Mbikogbia
- * Programs creates and runs test cases for Tarsn.java
+ * Programs creates and runs test cases for SchubsH.java, SchubsL.java, SchubsArc.java, and Deschubs.java
  *
  */
 
@@ -27,7 +27,7 @@ import org.junit.rules.TestWatcher;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
-public class HuffmanTest 
+public class FileCompressionTests 
 {
     private final PrintStream originalOut = System.out;
     private final PrintStream originalErr = System.err;

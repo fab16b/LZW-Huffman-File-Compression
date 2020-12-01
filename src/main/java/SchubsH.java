@@ -1,22 +1,14 @@
 /*************************************************************************
- *  Compilation:  javac Huffman.java
- *  Execution:    java Huffman - < input.txt   (compress)
- *  Execution:    java Huffman + < input.txt   (expand)
+ * Author:        Felix Mbikogbia
+ * Date:          Nov 30, 2020
+ * Course:        Software Engineering 2, Fall semester
+ *  Compilation:  javac SchubsH.java
+ *  Execution:    java SchubsH *.txt
+ * Execution:     java SchubsH file1.txt file2.txt .....
  *  Dependencies: BinaryIn.java BinaryOut.java
- *  Data files:   http://algs4.cs.princeton.edu/55compression/abra.txt
- *                http://algs4.cs.princeton.edu/55compression/tinytinyTale.txt
  *  modified:     change logging to true to enable debugging info to StdErr
  *
- *
- *  Compress or expand a binary input stream using the Huffman algorithm.
- *
- *  % java Huffman - < abra.txt | java BinaryDump 60
- *  010100000100101000100010010000110100001101010100101010000100
- *  000000000000000000000000000110001111100101101000111110010100
- *  120 bits
- *
- *  % java Huffman - < abra.txt | java Huffman +
- *  ABRACADABRA!
+ *  Compress file input using Huffman algorighm.
  *
  *************************************************************************/
 

@@ -5,10 +5,12 @@ import java.io.File;
  *  Course name:    Software Engineering 2
  *  Term:           Fall 2020
  *  Compilation:    javac SchubsL.java
- *  Execution:      java SchubsL file.txt //file to be compressed. file.txt is compressed to file.txt.ll
+ *  Execution:      java SchubsL file.txt file2.txt ....
+ * //file to be compressed. file.txt is compressed to file.txt.ll
+ *  Execution:      java SchubsL *.txt
  *  Dependencies:   BinaryIn.java BinaryOut.java
  *
- *  Compress or expand binary input from standard input using SchubsL.
+ *  Compress input files using the LZW compression algorithm
  *
  *
  *************************************************************************/
