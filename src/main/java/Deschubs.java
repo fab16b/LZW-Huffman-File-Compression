@@ -1,6 +1,6 @@
 import java.io.File;
 
-import jdk.internal.agent.resources.agent;
+//import jdk.internal.agent.resources.agent;
 
 //import jdk.internal.net.http.PullPublisher;
 
@@ -23,7 +23,8 @@ public class Deschubs {
     public static boolean logging = true;
 
     private static Boolean inputFileExists = true;
-	private static Boolean numberOfArguments = true;
+    private static Boolean numberOfArguments = true;
+    private static Boolean fileIsEmpty = true;
 
 
     //Trie node for uncompressing SchubsH, 
@@ -123,25 +124,14 @@ public class Deschubs {
         out.close();
     }
 
-    public static void untar(String archiveFileName) {
+    public static void untar(String inputFileName) {
 		
-        File tarFile = null;
         BinaryIn in = null;
         BinaryOut out = null;
 
         char sep =  (char) 255;  // all ones 11111111
 
-        // nerf through archive, extracting files
-        // int lengthoffilename, sep, filename, sep, lengthoffile, sep, bits
-
-        tarFile = new File(archiveFileName);
-        if (!tarFile.exists() || !tarFile.isFile()) {
-            System.out.println("Invalide input file name.");
-            inputFileExists = false;
-            return;
-        }
-
-        in = new BinaryIn( archiveFileName );
+        in = new BinaryIn( inputFileName );
         while(!in.isEmpty()){
             try {
                 int filenamesize = in.readInt();
@@ -170,23 +160,27 @@ public class Deschubs {
         
     }
 
-    public static  Boolean fileExists(){
-		return inputFileExists;
-	}
-	public static  Boolean argumentNumber(){
-		return numberOfArguments;
-	}
-
-
     public static void main(String[] args) {
-
+        File fileinput;
         BinaryIn in = null;
         BinaryOut out = null;
         String extractFilename = "";
         String extractFiletype = "";
+
+        if(args.length < 1){
+            System.out.println("Error. Wrong number of arguments. Must pass at least one argument.");
+            numberOfArguments = false;
+            return;
+        }
         
        for(int i = 0; i < args.length; i++)
        {
+        fileinput = new File(args[i]);
+        if (!fileinput.exists() || !fileinput.isFile()) {
+            System.out.println("Invalide input file name.");
+            inputFileExists = false;
+            return;
+        }
             // if arg[0] = lz.txt.ll, then args[0].length()-3 = lz.txt;
             for(int n = 0; n < args[i].length()-3; n++){
             
@@ -212,6 +206,7 @@ public class Deschubs {
                 } 
                 else if (extractFiletype.equals(".zh")){
                     expandHuffman(in, out);
+                    System.out.println("This is file name:" + extractFilename);
                     untar(extractFilename);  
                 }
                 else {
@@ -228,5 +223,15 @@ public class Deschubs {
             extractFiletype = "";
        }
     }
+
+    public static  Boolean fileExists(){
+		return inputFileExists;
+	}
+	public static  Boolean argumentNumber(){
+		return numberOfArguments;
+    }
+    public static  Boolean fileIsEmpty(){
+		return fileIsEmpty;
+	}
 
 }

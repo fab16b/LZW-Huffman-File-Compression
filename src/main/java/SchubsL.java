@@ -47,6 +47,12 @@ public class SchubsL {
         BinaryOut out = null;
         File currentFile;
 
+        if(args.length < 1){
+            System.out.println("Error. Wrong number of arguments. Must pass at least one argument.");
+            numberOfArguments = false;
+            return;
+        }
+
 
        for(int i = 0; i < args.length; i++)
        {

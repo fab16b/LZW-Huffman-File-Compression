@@ -24,15 +24,15 @@ public class SchubsArc
         BinaryOut out = null;
         char separator = (char) 255; // it is all ones
 
-        if (args.length <= 1) {
-            System.out.println("Error. Wrong number of arguments. Must pass more than 1 arguments.");
-            numberOfArguments = false;
-            return;
-        }
-
         String filesToTar[] = new String[args.length-1];
         long filesize[] = new long[args.length-1]; 
         int filenamesize[] =  new int[args.length-1];
+
+        if (args.length <= 1) {
+            System.out.println("Incorrect argument numbers. Input at least 2 arguments.");
+            numberOfArguments = false;
+            return;
+        } 
 
         try {
             // notive that the input files start at agr[1], not arg[0]
@@ -41,12 +41,12 @@ public class SchubsArc
             for (int i = 1; i < args.length; i++) {
                 inputfile = new File(args[i]);
 
-                if (!inputfile.exists() || !inputfile.isFile()) {
+                if (!inputfile.exists() || !inputfile.isFile() || args.length <= 1) {
                     System.out.println("Invalide input file name.");
                     inputFileExists = false;
+                    numberOfArguments = false;
                     return;
-                }
-
+                } 
                 filesToTar[i-1] = args[i];
                 filesize[i-1] = inputfile.length();
                 filenamesize[i-1] = args[i].length();

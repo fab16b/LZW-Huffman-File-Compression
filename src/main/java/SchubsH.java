@@ -213,6 +213,12 @@ public class SchubsH {
         String extractZHfileName = "";
         String extractFiletype = "";
 
+        if(args.length < 1){
+            System.out.println("Error. Wrong number of arguments. Must pass at least one argument.");
+            numberOfArguments = false;
+            return;
+        }
+
 
        for(int i = 0; i < args.length; i++)
        {
