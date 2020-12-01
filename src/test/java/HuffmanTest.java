@@ -41,12 +41,14 @@ public class HuffmanTest
     String randomSchubsArc = "Resources"+File.separator + "RandomTestGenerator"+File.separator+"SchubsArc"+File.separator;
 
     String pathDeschubs_Files = "Resources"+File.separator + "Deschubs"+File.separator+"OriginalFiles"+File.separator;
+    String pathDeschubs_Files2 = "Resources"+File.separator + "Deschubs"+File.separator+"OriginalFiles2"+File.separator;
+    String pathDeschubs_Files3 = "Resources"+File.separator + "Deschubs"+File.separator+"OriginalFiles3"+File.separator;
     String pathDeschubs_HuffCompressed = "Resources"+File.separator + "Deschubs"+File.separator+"HuffCompressed"+File.separator;
     String pathDeschubs_LZWCompressed = "Resources"+File.separator + "Deschubs"+File.separator+"LZCompressed"+File.separator;
     String pathDeschubs_HuffSolution= "Resources"+File.separator + "Deschubs"+File.separator+"HuffSolution"+File.separator;
     String pathDeschubs_LZWSolution = "Resources"+File.separator + "Deschubs"+File.separator+"LZWSolution"+File.separator;
     String pathDeschubs_CompressedArchive = "Resources"+File.separator + "Deschubs"+File.separator+"CompressedArchive"+File.separator;
-    String pathDeschubs_UnArchive = "Resources"+File.separator + "Deschubs"+File.separator+"UnArchiveSolution"+File.separator;
+    String pathDeschubs_UnArchiveSolution = "Resources"+File.separator + "Deschubs"+File.separator+"UnArchiveSolution"+File.separator;
 
     String pathSchubsArc_Files = "Resources"+File.separator + "SchubsArc"+File.separator+"OriginalFiles"+File.separator;
     String pathSchubsArc_Archive = "Resources"+File.separator + "SchubsArc"+File.separator+"HuffCompressedArchive"+File.separator;
@@ -282,21 +284,38 @@ public class HuffmanTest
     //  * Test5 a, b, c: The file(s) to be Tars'd contain characters such as spaces and line endings
     //  */
 
-    // @Test
-    // public void passingTestCases() {
-    //     String [] tests = {testsArchivePath+"archive1.txt", filesPath+"Test1a.txt",filesPath+"Test1b.txt", filesPath+"Test1c.txt",
-    //     testsArchivePath+"archive2.txt", filesPath+"Test2a.txt", filesPath+"Test2b.txt", filesPath+"Test2c.txt",
-    //     testsArchivePath+ "archive3.txt", filesPath+"Test3a.txt", filesPath+"Test3b.txt", filesPath+"Test3c.txt",
-    //     testsArchivePath+ "archive4.txt", filesPath+"Test4a.txt", filesPath+"Test4b.txt", filesPath+"Test4c.txt",
-    //     testsArchivePath+ "archive5.txt", filesPath+"Test5a.txt", filesPath+"Test5b.txt", filesPath+"Test5c.txt"};
+    @Test
+    public void passingTestCasesArc() {
+        String [] testsArc = {pathSchubsArc_Archive+"archive1.zh", pathSchubsArc_Files+"Test1a.txt",pathSchubsArc_Files+"Test1b.txt", pathSchubsArc_Files+"Test1c.txt",pathSchubsArc_Files+"Test1d.txt",pathSchubsArc_Files+"Test1e.txt",
+        pathSchubsArc_Archive+"archive2.zh", pathSchubsArc_Files+"Test2a.txt",pathSchubsArc_Files+"Test2b.txt", pathSchubsArc_Files+"Test2c.txt",pathSchubsArc_Files+"Test2d.txt",pathSchubsArc_Files+"Test2e.txt",
+        pathSchubsArc_Archive+"archive3.zh", pathSchubsArc_Files+"Test3a.txt",pathSchubsArc_Files+"Test3b.txt", pathSchubsArc_Files+"Test3c.txt",pathSchubsArc_Files+"Test3d.txt",pathSchubsArc_Files+"Test3e.txt",
+        pathSchubsArc_Archive+"archive4.zh", pathSchubsArc_Files+"Test4a.txt",pathSchubsArc_Files+"Test4b.txt", pathSchubsArc_Files+"Test4c.txt",pathSchubsArc_Files+"Test4d.txt",pathSchubsArc_Files+"Test4e.txt",
+        pathSchubsArc_Archive+"archive5.zh", pathSchubsArc_Files+"Test5a.txt",pathSchubsArc_Files+"Test5b.txt", pathSchubsArc_Files+"Test5c.txt",pathSchubsArc_Files+"Test5d.txt",pathSchubsArc_Files+"Test5e.txt"};
 
-    //     for(int i = 0; i < tests.length; i=i+4){
-    //         String [] args = {tests[i], tests[i+1], tests[i+2], tests[i+3]};
-    //         Tarsn.main(args);   
-    //     }
-    //     String [] folders = {filesPath+"TestsArchive", filesPath+"SolutionsArchive"};
-    //     assertTrue(foldersEqual(folders));
-    // }
+        for(int i = 0; i < testsArc.length; i=i+6){
+            String [] args = {testsArc[i], testsArc[i+1], testsArc[i+2], testsArc[i+3], testsArc[i+4]};
+            SchubsArc.main(args);   
+        }
+        String [] folders = {pathSchubsArc_Archive, pathSchubsArc_Solution};
+        assertTrue(foldersEqual(folders));
+    }
+
+    @Test
+    public void passingTestCasesDes() {
+        String [] testsUnarchive = {pathDeschubs_CompressedArchive+"ArchivedFiles1.zh", pathDeschubs_CompressedArchive+"ArchivedFiles2.zh", pathDeschubs_CompressedArchive+"ArchivedFiles3.zh"};
+
+        for(int i = 0; i < testsUnarchive.length; i++){
+            String [] args = {testsUnarchive[i]};
+            Deschubs.main(args);   
+        }
+        
+        String [] folders1 = {pathDeschubs_Files, pathDeschubs_UnArchiveSolution};
+        String [] folders2 = {pathDeschubs_Files2, pathDeschubs_UnArchiveSolution};
+        String [] folders3 = {pathDeschubs_Files2, pathDeschubs_UnArchiveSolution};
+        assertTrue(foldersEqual(folders1));
+        assertTrue(foldersEqual(folders2));
+        assertTrue(foldersEqual(folders3));
+    }
 
     // //The file to be Tars'd is instead a directory and should therefore fail
     // @Test
